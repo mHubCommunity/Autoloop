@@ -36,7 +36,7 @@ void lookForUDPMessages(){
         Serial.print(F("Free SRAM: "));
         Serial.println(freeRam());
       }else{
-        Serial.println("Out of range");
+        Serial.println(F("Out of range"));
       }
     }
   }
