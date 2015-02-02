@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Autoloop/ViewController.m"
-            timestampString = "444477506.620257"
+            timestampString = "444532065.849211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-fetchBlockAtRow:column:"
             landmarkType = "5">
          </BreakpointContent>

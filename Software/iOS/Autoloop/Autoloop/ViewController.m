@@ -70,7 +70,7 @@
 }
 
 -(NSUInteger)numberOfGridColumns{
-    return 2;
+    return 1;
 }
 
 
@@ -108,8 +108,33 @@
     }else{
         savedBlock.active = [NSNumber numberWithBool:cell.active];
     }
+    
+    if (cell.active) {
+        cell.backgroundColor = [UIColor redColor];
+    }else{
+        cell.backgroundColor = [UIColor blackColor];
+    }
 }
 
+#pragma mark - IBActions
+
+-(IBAction)startStopTapped:(id)sender{
+    if ([self.startStopButton.titleLabel.text isEqualToString:@"Start"]) {
+        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+    }else{
+        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    }
+    
+    [self.sequencer startStopToggled];
+}
+
+
+-(void)sliderChanged:(id)sender{
+    self.bpmLabel.text = [NSString stringWithFormat:@"%i", (int)self.bpmSlider.value];
+    self.sequencer.currentBPM = [NSNumber numberWithInt:(int)self.bpmSlider.value];
+}
+
+#pragma mark - Block Fetching and Saving
 
 -(Block *)fetchBlockAtRow:(int)row column:(int)column{
     NSManagedObjectContext *context = [(AppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];

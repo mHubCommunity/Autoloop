@@ -13,6 +13,12 @@
 @interface ViewController : UIViewController
 
 @property (nonatomic, assign) IBOutlet MSGridView *gridView;
+@property (nonatomic, assign) IBOutlet UIButton *startStopButton;
+@property (nonatomic, assign) IBOutlet UILabel *bpmLabel;
+@property (nonatomic, assign) IBOutlet UISlider *bpmSlider;
+
+-(IBAction)startStopTapped:(id)sender;
+-(IBAction)sliderChanged:(id)sender;
 
 @end
 
