@@ -25,6 +25,8 @@
 }
 
 -(void)advanceSequencer;
+-(void)setColumn:(NSUInteger)column withTintColor:(UIColor *)color;
+-(void)checkIndexPathForActiveInstruments:(NSIndexPath *)indexPath;
 
 @end
 

@@ -19,6 +19,7 @@
 
 -(IBAction)startStopTapped:(id)sender;
 -(IBAction)sliderChanged:(id)sender;
+-(IBAction)clearAll:(id)sender;
 
 @end
 

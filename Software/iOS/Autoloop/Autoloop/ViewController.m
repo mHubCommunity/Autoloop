@@ -134,6 +134,15 @@
     self.sequencer.currentBPM = [NSNumber numberWithInt:(int)self.bpmSlider.value];
 }
 
+-(void)clearAll:(id)sender{
+    for(NSIndexPath *indexPath in [[self.gridView gridCells] allKeys]){
+        MSGridViewCell *cell = [self.gridView cellAtIndexPath:indexPath];
+        cell.backgroundColor = [UIColor blackColor];
+        cell.active = NO;
+    }
+
+}
+
 #pragma mark - Block Fetching and Saving
 
 -(Block *)fetchBlockAtRow:(int)row column:(int)column{

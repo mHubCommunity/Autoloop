@@ -17,25 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-FL-DrL" customClass="MSGridView">
-                                <rect key="frame" x="0.0" y="38" width="600" height="523"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koG-B2-SWX">
-                                <rect key="frame" x="16" y="562" width="33" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" red="0.99215692280000001" green="0.0" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minValue="60" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="WtL-Uv-GMf">
+                                <rect key="frame" x="205" y="562" width="245" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.99215692280000001" green="0.0" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="thumbTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="startStopTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75z-qB-cLO"/>
+                                    <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="cyF-Cm-2cn"/>
                                 </connections>
-                            </button>
+                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ue-Z9-uns">
                                 <rect key="frame" x="545" y="566" width="39" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="Zml-8c-yPx"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.99215692280000001" green="0.0" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
@@ -48,42 +39,59 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hae-IW-1i2">
                                 <rect key="frame" x="89" y="562" width="58" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="58" id="QEM-VL-X1U"/>
-                                </constraints>
                                 <state key="normal" title="Clear All">
                                     <color key="titleColor" red="0.99215692280000001" green="0.0" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minValue="60" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="WtL-Uv-GMf">
-                                <rect key="frame" x="205" y="562" width="245" height="31"/>
-                                <color key="minimumTrackTintColor" red="0.99215692280000001" green="0.0" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="thumbTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="cyF-Cm-2cn"/>
+                                    <action selector="clearAll:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q8y-oE-tVy"/>
                                 </connections>
-                            </slider>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koG-B2-SWX">
+                                <rect key="frame" x="16" y="562" width="33" height="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.99215692280000001" green="0.0" blue="0.066666670139999995" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startStopTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75z-qB-cLO"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33F-kf-Oag">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="558"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byp-FL-DrL" customClass="MSGridView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="558"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Byp-FL-DrL" firstAttribute="centerY" secondItem="33F-kf-Oag" secondAttribute="centerY" id="BIl-4w-MO8"/>
+                                    <constraint firstItem="Byp-FL-DrL" firstAttribute="leading" secondItem="33F-kf-Oag" secondAttribute="leading" id="GVf-gA-asr"/>
+                                    <constraint firstItem="Byp-FL-DrL" firstAttribute="top" secondItem="33F-kf-Oag" secondAttribute="top" id="OF5-mc-0f9"/>
+                                    <constraint firstAttribute="trailing" secondItem="Byp-FL-DrL" secondAttribute="trailing" id="dKZ-3A-Ail"/>
+                                    <constraint firstItem="Byp-FL-DrL" firstAttribute="centerX" secondItem="33F-kf-Oag" secondAttribute="centerX" id="iB9-o2-FKH"/>
+                                    <constraint firstAttribute="bottom" secondItem="Byp-FL-DrL" secondAttribute="bottom" id="nlo-XP-c2D"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="WtL-Uv-GMf" firstAttribute="leading" secondItem="Hae-IW-1i2" secondAttribute="trailing" constant="60" id="2NF-fR-REc"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Byp-FL-DrL" secondAttribute="bottom" constant="39" id="3Fq-ZD-cJ3"/>
-                            <constraint firstItem="Byp-FL-DrL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BbW-gO-y8U"/>
-                            <constraint firstItem="Hae-IW-1i2" firstAttribute="leading" secondItem="koG-B2-SWX" secondAttribute="trailing" constant="40" id="LC7-xK-vpD"/>
-                            <constraint firstItem="Byp-FL-DrL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="18" id="MXz-wF-AYJ"/>
-                            <constraint firstItem="koG-B2-SWX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OLX-Ut-MHa"/>
-                            <constraint firstItem="WtL-Uv-GMf" firstAttribute="top" secondItem="Byp-FL-DrL" secondAttribute="bottom" constant="1" id="Oig-1D-mXY"/>
-                            <constraint firstItem="CPG-qR-JCx" firstAttribute="baseline" secondItem="Hae-IW-1i2" secondAttribute="baseline" id="PBH-FX-FSg"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="koG-B2-SWX" secondAttribute="bottom" constant="8" symbolic="YES" id="RCy-eW-huF"/>
-                            <constraint firstItem="Hae-IW-1i2" firstAttribute="top" secondItem="Byp-FL-DrL" secondAttribute="bottom" constant="1" id="YLz-SS-1gw"/>
-                            <constraint firstItem="CPG-qR-JCx" firstAttribute="leading" secondItem="WtL-Uv-GMf" secondAttribute="trailing" constant="60" id="ZZI-E8-9KM"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Hae-IW-1i2" secondAttribute="bottom" constant="8" id="sVZ-WN-Eef"/>
-                            <constraint firstItem="0Ue-Z9-uns" firstAttribute="leading" secondItem="CPG-qR-JCx" secondAttribute="trailing" constant="8" symbolic="YES" id="tIr-kt-C6m"/>
-                            <constraint firstItem="0Ue-Z9-uns" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uog-71-a5h"/>
-                            <constraint firstItem="0Ue-Z9-uns" firstAttribute="baseline" secondItem="CPG-qR-JCx" secondAttribute="baseline" id="uzZ-lh-vUN"/>
-                            <constraint firstAttribute="trailing" secondItem="Byp-FL-DrL" secondAttribute="trailing" id="v6N-XS-ac6"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WtL-Uv-GMf" secondAttribute="bottom" constant="8" id="zAR-mf-0KB"/>
+                            <constraint firstItem="33F-kf-Oag" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2ew-Eb-iLC"/>
+                            <constraint firstItem="0Ue-Z9-uns" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="8Zp-3x-mbp"/>
+                            <constraint firstItem="CPG-qR-JCx" firstAttribute="leading" secondItem="WtL-Uv-GMf" secondAttribute="trailing" constant="60" id="Ejr-t0-sL5"/>
+                            <constraint firstAttribute="trailing" secondItem="33F-kf-Oag" secondAttribute="trailing" id="FxF-Qk-qHr"/>
+                            <constraint firstItem="0Ue-Z9-uns" firstAttribute="leading" secondItem="CPG-qR-JCx" secondAttribute="trailing" constant="8" symbolic="YES" id="GPZ-fn-SrR"/>
+                            <constraint firstItem="koG-B2-SWX" firstAttribute="baseline" secondItem="Hae-IW-1i2" secondAttribute="baseline" id="Gwc-Nr-0NQ"/>
+                            <constraint firstItem="Hae-IW-1i2" firstAttribute="top" secondItem="WtL-Uv-GMf" secondAttribute="top" id="Hxs-O4-fpi"/>
+                            <constraint firstItem="WtL-Uv-GMf" firstAttribute="leading" secondItem="Hae-IW-1i2" secondAttribute="trailing" constant="60" id="OPZ-0G-gqk"/>
+                            <constraint firstItem="koG-B2-SWX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="R7x-Py-9FF"/>
+                            <constraint firstItem="Hae-IW-1i2" firstAttribute="leading" secondItem="koG-B2-SWX" secondAttribute="trailing" constant="40" id="RUb-7h-slq"/>
+                            <constraint firstItem="0Ue-Z9-uns" firstAttribute="baseline" secondItem="CPG-qR-JCx" secondAttribute="baseline" id="fV9-lQ-mkC"/>
+                            <constraint firstItem="33F-kf-Oag" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lIN-t8-d3w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="koG-B2-SWX" secondAttribute="bottom" constant="8" symbolic="YES" id="s3P-tx-DzC"/>
+                            <constraint firstItem="CPG-qR-JCx" firstAttribute="top" secondItem="33F-kf-Oag" secondAttribute="bottom" constant="8" symbolic="YES" id="x2B-a4-e1W"/>
+                            <constraint firstItem="CPG-qR-JCx" firstAttribute="baseline" secondItem="Hae-IW-1i2" secondAttribute="baseline" id="zzE-rH-D2i"/>
                         </constraints>
                     </view>
                     <connections>
